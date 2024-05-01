@@ -1,0 +1,32 @@
+\begin{tikzpicture}
+\begin{axis}[
+    xlabel=Number of LLM calls ($*10^3$),
+    ylabel=Exact match,
+    xmin=0.8, xmax=2.6,
+    ymin=54, ymax=75]
+    xtick={50,52,54,56...,75}
+\addplot[smooth,mark=*,darkblue] plot coordinates {
+    (1,57)
+    (1.2,57.5)
+    (1.4,59)
+    (1.6,61)
+    (1.8,63)
+    (2.0,64.5)
+    (2.2,65.5)
+    (2.4,66.5)};
+\addlegendentry{\tab{}}
+
+\addplot[smooth,color=red,mark=x]
+    plot coordinates {
+    (1,65.5)
+    (1.2,66)
+    (1.4,67)
+    (1.6,67.5)
+    (1.8,68)
+    (2.0,68.5)
+    (2.2,69)
+    (2.4,69)
+    };
+\addlegendentry{GSM8K}
+\end{axis}
+    \end{tikzpicture}
