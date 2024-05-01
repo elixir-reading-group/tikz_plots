@@ -1,0 +1,65 @@
+
+
+\begin{tikzpicture}
+\edef\mylst{"69.37","48.82","76.78","54.75"}
+\edef\explora{"79.07","53.94","79.65","59.46"}
+
+    \begin{axis}[
+            ybar=5pt,
+            width=1\textwidth,
+            bar width=0.25,
+            every axis plot/.append style={fill},
+            grid=major,
+            xtick={1, 2, 3, 4},
+            xticklabels={GSM8K, AquaRat, TabMWP, FinQA},
+            xlabel={},
+            ylabel style = {font=\small},
+        yticklabel style = {font=\boldmath \tiny,xshift=0.5ex},
+        xticklabel style ={font=\small,yshift=0.5ex},
+            ylabel={Number of LLM Calls (in $10^4$)},
+            enlarge x limits=0.15,
+            ymin=1000,
+            ymax=40000,
+            legend style ={font=\small,yshift=0.5ex},
+            area legend,
+            nodes near coords style={font=\tiny,align=center,text width=2em},
+            legend entries={LENS, EXPLORA},
+            legend cell align={left},
+            legend pos=north west,
+            legend columns=-1,
+            legend style={/tikz/every even column/.append style={column sep=0.5cm}},
+        ]
+        \addplot+[
+            ybar,
+            plotColor1*,
+            nodes near coords=\pgfmathsetmacro{\mystring}{{\mylst}[\coordindex]}\textbf{\mystring},
+            nodes near coords align={vertical},
+            draw=black,
+            postaction={
+                    pattern=north east lines
+                },
+        ] plot coordinates {
+                (1,24176)
+                (2,23111)
+                (3,30543)
+                (4,24004)
+            };
+        \addplot+[
+            ybar,
+            plotColor2*,
+            draw=black,
+            nodes near coords=\pgfmathsetmacro{\mystring}{{\explora}[\coordindex]}\textbf{\mystring},
+    nodes near coords align={vertical},
+            postaction={
+                    pattern=north west lines
+                },
+        ] plot coordinates {
+                (1,3619)
+                (2,2554)
+                (3,9986)
+                (4,3447)
+            };
+ 
+
+    \end{axis}
+\end{tikzpicture}
